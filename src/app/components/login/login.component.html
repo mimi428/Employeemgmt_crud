@@ -1,0 +1,37 @@
+<div class="container-fluid">
+    <div class="row no-gutter">
+      <!-- The image half -->
+      <div class="col-md-6 d-none d-md-flex bg-image"></div>
+  
+      <!-- The content half -->
+      <div class="col-md-6 bg-dark">
+        <div class="login d-flex align-items-center py-5">
+  
+          <!--content-->
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-10 col-xl-7 mx-auto text-white ">
+                <h3 class="display-4 text-uppercase">Login</h3>
+                <p class="text-muted mb-4">Welcome back....</p>
+                <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+                  <div class="form-group mb-3">
+                    <input id="inputUsername" type="text" formControlName="userName" placeholder="Email" class="form-control shadow-sm px-4">
+                    <span class="text-danger" *ngIf="loginForm.controls['userName']?.invalid && loginForm.controls['userName'].dirty"> Email is required </span>
+                  </div>
+                  <div class="form-group mb-3">
+                    <input id="inputPassword" type="password" formControlName="password" placeholder="Password" required="" class="form-control shadow-sm px-4 text-primary">
+                    <span class="text-danger" *ngIf="loginForm.controls['password']?.invalid && loginForm.controls['password'].dirty"> Password is required </span>
+                  </div>
+  
+                  <button type="submit" class="btn" [disabled]="!loginForm.valid">Login!</button>
+                </form>
+              </div>
+            </div>
+          </div><!-- End -->
+  
+        </div>
+      </div><!-- End -->
+  
+    </div>
+  </div>
+  

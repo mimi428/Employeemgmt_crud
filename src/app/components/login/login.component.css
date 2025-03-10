@@ -1,0 +1,26 @@
+/*
+*
+* ==========================================
+* CUSTOM UTIL CLASSES
+* ==========================================
+*
+*/
+.login,
+.image {
+  min-height: 100vh;
+}
+
+.bg-image {
+  background-image: url('https://res.cloudinary.com/da3d5glln/image/upload/v1741533290/samples/cup-on-a-table.jpg');
+  background-size: cover;
+  background-position: center;
+}
+.btn {
+    align-items: center;
+    background-color: #214622; /* Green */
+    color: white;
+    border: none;
+}
+.btn:hover {
+    background-color: #45a049; /* Darker green */
+}
