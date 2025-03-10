@@ -1,17 +1,18 @@
 # Employee Management 
 
-The Employee Management System is a web application built using Angular 19 that allows users to manage employee records efficiently. The application interacts with a backend API hosted at https://projectapi.gerasim.in to perform CRUD (Create, Read, Update, Delete) operations on employee data
+The Employee Management System is a web application built using **Angular 19** that allows users to manage employee records efficiently. The application interacts with a backend API hosted at https://projectapi.gerasim.in to perform CRUD operations on employee data.
 
 ## Features
--Admin Authentication: Secure login system for administrators only.
+- Secure **Admin Authentication** system.
+- Employee **CRUD Operations**:
+  - Add new employees.
+  - View employee details.
+  - Update employee records.
+  - Delete employees.
+- **Dashboard** for managing employees.
+- **LocalStorage Support** for admin sessions.
 
--Employee CRUD Operations:
-  -Create new employee records.
-  -View a list of all employees.
-  -Update existing employee details.
-  -Delete employee records.
-
--Dashboard: A user-friendly interface for administrators to manage employees.
+Work in progress.....
 
 
 
