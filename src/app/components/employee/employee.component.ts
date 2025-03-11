@@ -34,12 +34,12 @@ export class EmployeeComponent {
     this.employeeForm = new FormGroup({
       empid: new FormControl(this.employeeObj.empid), // ✅ Match key name
       name: new FormControl(this.employeeObj.name, [Validators.required]),
-      city: new FormControl(this.employeeObj.city),
-      address: new FormControl(this.employeeObj.address),
-      contactNo: new FormControl(this.employeeObj.contactNo),
-      emailId: new FormControl(this.employeeObj.emailId),
+      city: new FormControl(this.employeeObj.city, [Validators.required]),
+      address: new FormControl(this.employeeObj.address, [Validators.required]),
+      contactNo: new FormControl(this.employeeObj.contactNo, [Validators.required]),
+      emailId: new FormControl(this.employeeObj.emailId, [Validators.required, Validators.email]),
       pinCode: new FormControl(this.employeeObj.pinCode, [Validators.required, Validators.minLength(6)]),
-      state: new FormControl(this.employeeObj.state) 
+      state: new FormControl(this.employeeObj.state, [Validators.required]) 
     });
   }
 
@@ -67,6 +67,10 @@ export class EmployeeComponent {
     if (record !== undefined) {
       record.address = this.employeeForm.controls['address'].value;
       record.name = this.employeeForm.controls['name'].value;
+      record.city = this.employeeForm.controls['city'].value;
+      record.emailId = this.employeeForm.controls['emailId'].value;
+      record.pinCode = this.employeeForm.controls['pinCode'].value;
+      record.state = this.employeeForm.controls['state'].value;
       record.contactNo = this.employeeForm.controls['contactNo'].value;
     }
     localStorage.setItem("EmpData", JSON.stringify(this.employeeList));

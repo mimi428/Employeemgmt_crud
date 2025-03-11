@@ -1,9 +1,8 @@
-<p>employee works!</p>
 <div class="row">
-    <div class="col-8">
+    <div class="col-6">
       <div class="card">
-        <div class="card-header bg-success">
-          <h6>Employee List</h6>
+        <div class="card-header ">
+          <h6>List of Employees</h6>
         </div>
         <div class="card-body">
           <div class="row">
@@ -11,10 +10,10 @@
               <table class="table table-bordered">
                 <thead>
                   <tr>
-                    <th>Sr No</th>
+                    <th>S.N.</th>
                     <th>Name</th>
-                    <th>Contact No</th>
-                    <th>Email-Id</th>
+                    <th>Contact</th>
+                    <th>Email</th>
                     <th class="text-center">Action</th>
                   </tr>
                 </thead>
@@ -38,10 +37,10 @@
         </div>
       </div>
     </div>
-    <div class="col-4">
+    <div class="col-5">
       <div class="card">
-        <div class="card-header bg-success">
-          New Employee
+        <div class="card-header">
+          <h6>Add new Employee</h6>
         </div>
         <div class="card-body">
           <form [formGroup]="employeeForm">
@@ -52,27 +51,59 @@
                 <div class="text-danger">
                   @if(employeeForm.controls['name'].touched) {
                     @if (employeeForm.controls['name'].errors?.['required']) {
-                      <span> Name IS Required</span>
+                      <span> Please enter your name</span>
                     } 
                   }
                   
                 </div>
               </div>
               <div class="col-6">
-                <label for="">Email-Id</label>
+                <label for="">Email</label>
                 <input type="text" formControlName="emailId" class="form-control">
+                <div class="text-danger">
+                  @if(employeeForm.controls['emailId'].touched) {
+                    @if (employeeForm.controls['emailId'].errors?.['required']) {
+                      <span> Email-id is required</span>
+                    } 
+                    @if (employeeForm.controls['emailId'].errors?.['email']) {
+                      <span>Incorrect Email</span>
+                    } 
+                  }
+                  
+                </div>
               </div>
               <div class="col-6">
                 <label for="">Contact No</label>
                 <input type="text" formControlName="contactNo" class="form-control">
+                <div class="text-danger">
+                  @if(employeeForm.controls['contactNo'].touched) {
+                    @if (employeeForm.controls['contactNo'].errors?.['required']) {
+                      <span> Contact is required</span>
+                    } 
+                  }  
+                </div>
               </div>
               <div class="col-6">
                 <label for="">City</label>
                 <input type="text" formControlName="city" class="form-control">
+                <div class="text-danger">
+                  @if(employeeForm.controls['city'].touched) {
+                    @if (employeeForm.controls['city'].errors?.['required']) {
+                      <span> Please enter your city</span>
+                    } 
+                  }  
+                </div>
               </div>
               <div class="col-6">
                 <label for="">State</label>
                 <input type="text" formControlName="state" class="form-control">
+                <div class="text-danger">
+                  @if(employeeForm.controls['state'].touched) {
+                    @if (employeeForm.controls['state'].errors?.['required']) {
+                      <span> State is required</span>
+                    } 
+                  }  
+                </div>
               </div>
               <div class="col-6">
                 <label for="">Pin Code</label>
@@ -80,7 +111,7 @@
                 <div class="text-danger">
                   @if(employeeForm.controls['pinCode'].touched) {
                     @if (employeeForm.controls['pinCode'].errors?.['required']) {
-                      <span> Name IS Required</span>
+                      <span> Pin is required</span>
                     } 
                     @if (employeeForm.controls['pinCode'].errors?.['minlength']) {
                       <span> Min 6 Char Required</span>
