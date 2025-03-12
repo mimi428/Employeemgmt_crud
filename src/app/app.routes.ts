@@ -4,6 +4,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { EmployeeComponent } from './components/employee/employee.component';
 import { Component } from '@angular/core';
 import { LayoutComponent } from './components/layout/layout.component';
+import { ProjectComponent } from './components/project/project.component';
 
 export const routes: Routes = [
 
@@ -27,6 +28,10 @@ export const routes: Routes = [
             {
                 path: 'employee',
                 component: EmployeeComponent
+            },
+            {
+                path: 'project',
+                component: ProjectComponent
             }
         ]
     }

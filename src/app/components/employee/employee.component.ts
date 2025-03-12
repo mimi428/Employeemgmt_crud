@@ -33,7 +33,24 @@ export class EmployeeComponent implements OnInit{
   }
   openSidePanel(employee?: Employee) {
     this.isSidePanel.set(true);
-  }
+    if(!employee){
+      this.employeeForm.reset({
+        employeeId: 0, // Default value for employeeId
+        employeeName: '', // Empty string for name
+        contactNo: '', // Empty string for contact number
+        emailId: '', // Empty string for email
+        password: '', // Empty string for password
+        deptId: 0, // Default department ID
+        role: 'Employee', // Default role
+        gender: '', // Empty string for gender
+      });
+    }else {
+        // For editing an existing employee, patch the form with the provided data
+        this.employeeForm.patchValue(employee);
+      }
+    }
+
+
   
 
   closeSidePanel() {
