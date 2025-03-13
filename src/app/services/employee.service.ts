@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Employee, EmployeeProject, IApiResponse, Project } from '../model/Employee';
-import { catchError, Observable, throwError } from 'rxjs';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -15,10 +15,6 @@ export class EmployeeService {
   createNewEmployee(obj: Employee){
     return this.http.post<Employee>(this.apiUrl + 'CreateEmployee', obj);
   }
-
-  // getAllEmployees(){
-  //   return this.http.get<Employee[]>();
-  // }
 
   getAllEmployees(): Observable<Employee[]> {
   return this.http.get<Employee[]>('https://projectapi.gerasim.in/api/EmployeeManagement/GetAllEmployees')
