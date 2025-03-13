@@ -1,32 +1,25 @@
-<div class="container-fluid">
-  <div class="row no-gutter">
-    <!-- The image half -->
-    <div class="image-half"></div>
+<div class="container">
+  <div class="image-half"></div>
 
-    <!-- The content half -->
-    <div class="content-half">
-      <div class="login-container">
-        <div class="inner-container">
-          <div class="login-form-container">
-            <h3 class="login-title">Login</h3>
-            <p class="welcome-text">Welcome back....</p>
-            <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
-              <div class="form-group">
-                <input id="inputUsername" type="text" formControlName="userName" placeholder="Email" class="form-control">
-                <span class="error-message" *ngIf="loginForm.controls['userName']?.invalid && loginForm.controls['userName'].dirty"> Email is required </span>
-              </div>
-              <div class="form-group">
-                <input id="inputPassword" type="password" formControlName="password" placeholder="Password" required class="form-control">
-                <span class="error-message" *ngIf="loginForm.controls['password']?.invalid && loginForm.controls['password'].dirty"> Password is required </span>
-              </div>
-
-              <button type="submit" class="submit-button" [disabled]="!loginForm.valid">Login!</button>
-            </form>
-          </div>
-        </div><!-- End -->
-
+  <div class="content-half">
+    <div class="login-container">
+      <div class="inner-container">
+        <div class="login-form-container">
+          <h3 class="login-title">Login</h3>
+          <p class="welcome-text">Welcome back....</p>
+          <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+            <div class="form-group">
+              <input id="inputUsername" type="text" formControlName="userName" placeholder="Email" class="form-control">
+              <span class="error-message" *ngIf="loginForm.controls['userName']?.invalid && loginForm.controls['userName'].dirty"> Email is required </span>
+            </div>
+            <div class="form-group">
+              <input id="inputPassword" type="password" formControlName="password" placeholder="Password" class="form-control">
+              <span class="error-message" *ngIf="loginForm.controls['password']?.invalid && loginForm.controls['password'].dirty"> Password is required </span>
+            </div>
+            <button type="submit" class="submit-button" [disabled]="!loginForm.valid">Login!</button>
+          </form>
+        </div>
       </div>
-    </div><!-- End -->
-
+    </div>
   </div>
 </div>

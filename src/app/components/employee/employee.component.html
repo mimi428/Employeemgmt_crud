@@ -1,125 +1,95 @@
-<div class="row">
-    <!-- <div class="col-8 text-center">
-        <h2> Post API Integration using Template Form</h2>
+<!-- employee-portal.component.html -->
+<div class="employee-portal">
+    <div class="card">
+        <div class="card-header">
+            <h5>Employees:</h5>
+            <button class="btn-primary" (click)="openSidePanel()">Add New</button>
+        </div>
+        <div class="card-body">
+            <table class="employee-table">
+                <thead>
+                    <tr>
+                        <th>Emp ID</th>
+                        <th>Name</th>
+                        <th>Contact No</th>
+                        <th>Email</th>
+                        <th>Department</th>
+                        <th>Role</th>
+                        <th>Gender</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let Employee of EmployeeList; let i = index">
+                        <td>{{ Employee.employeeId }}</td>
+                        <td>{{ Employee.employeeName }}</td>
+                        <td>{{ Employee.contactNo }}</td>
+                        <td>{{ Employee.emailId }}</td>
+                        <td>{{ Employee.deptId }}</td>
+                        <td>{{ Employee.role }}</td>
+                        <td>{{ Employee.gender }}</td>
+                        <td>
+                            <button class="btn-primary" (click)="editEmployee(Employee); openSidePanel()">Edit</button>
+                            <button class="btn-danger" (click)="deleteEmployee(Employee.employeeId)">Delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
-    <div class="col-4">
-        <button class="btn btn-primary" (click)="getAllCars()">Get Cars</button>
-    </div> -->
-</div>
-
-<div class="row pt-2 position-relative vh-100">
-    <div class="col-13">
+    
+    <div class="side-panel" *ngIf="isSidePanel()">
         <div class="card">
-            <div class="card-header bg-warning d-flex justify-content-between align-items-center">
-                <h5> Employee Portal</h5>
-                <button class="btn btn-primary" (click)="openSidePanel()">Add New</button>
+            <div class="card-header">
+                <h5>New Employee</h5>
+                <button class="btn-danger" (click)="closeSidePanel()">Close</button>
             </div>
             <div class="card-body">
-                <table class="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th>Emp ID</th>
-                            <th>Name</th>
-                            <th>Contact No</th>
-                            <th>Email</th>
-                            <th>Department</th>
-                            <th>Role</th>
-                            <th>Gender</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @for (Employee of EmployeeList; track $index) {
-                            <tr>
-                                <td>{{ Employee.employeeId}}</td>
-                                <td>{{ Employee.employeeName }}</td>
-                                <td>{{ Employee.contactNo }}</td>
-                                <td>{{ Employee.emailId }}</td>
-                                <td>{{ Employee.deptId }}</td>
-                                <td>{{ Employee.role }}</td>
-                                <td>{{ Employee.gender }}</td>
-                                <td>
-                                    <button class="btn btn-primary" (click)="editEmployee( Employee )" (click)="openSidePanel()">Edit</button>
-                                    <button class="btn btn-danger" (click)="deleteEmployee(Employee.employeeId)">Delete</button>
-                                </td>
-                            </tr>
-                        }
-                    </tbody>
-                </table>
+                <div class="form-group">
+                    <label>Employee Name</label>
+                    <input type="text" [(ngModel)]="EmployeeObj.employeeName" placeholder="Enter Employee Name">
+                </div>
+                <div class="form-group">
+                    <label>Contact No</label>
+                    <input type="text" [(ngModel)]="EmployeeObj.contactNo" placeholder="Enter Contact No">
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="text" [(ngModel)]="EmployeeObj.emailId" placeholder="Enter Email">
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="text" [(ngModel)]="EmployeeObj.password" placeholder="Enter Password">
+                </div>
+                <div class="form-group">
+                    <label>Parent Department</label>
+                    <select [(ngModel)]="deptId" (change)="onDeptChange()">
+                        <option selected>Select Department</option>
+                        <option *ngFor="let parent of parentDeptList" [value]="parent.departmentId">{{ parent.departmentName }}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Child Department</label>
+                    <select [(ngModel)]="EmployeeObj.deptId">
+                        <option selected>Select Department</option>
+                        <option *ngFor="let child of childDeptList" [value]="child.childDeptId">{{ child.departmentName }}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Role</label>
+                    <input type="text" [(ngModel)]="EmployeeObj.role" placeholder="Enter Role">
+                </div>
+                <div class="form-group">
+                    <label>Gender</label>
+                    <label><input type="radio" value="male" [(ngModel)]="EmployeeObj.gender"> Male</label>
+                    <label><input type="radio" value="female" [(ngModel)]="EmployeeObj.gender"> Female</label>
+                    <label><input type="radio" value="other" [(ngModel)]="EmployeeObj.gender"> Other</label>
+                </div>
+                <div class="form-group text-center">
+                    <button *ngIf="EmployeeObj.employeeId == 0" class="btn-secondary" (click)="onSubmit()">Submit</button>
+                    <button *ngIf="EmployeeObj.employeeId != 0" class="btn-secondary" (click)="onEdit()">Update</button>
+                </div>
             </div>
         </div>
     </div>
-    @if(isSidePanel() == true){
-        <div class="col-5 bg-white p-4 shadow rounded position-absolute top-50 start-50 translate-middle">
-            <div class="card">
-                <div class="card-header bg-warning d-flex justify-content-between align-items-center">
-                    <h5> New Employee</h5>
-                    <button class="btn btn-danger" (click)="closeSidePanel()">Close</button>
-                </div>
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-6 mt-2">
-                            <label>Employee Name</label>
-                            <input type="text"  class="form-control" [(ngModel)]="EmployeeObj.employeeName" placeholder="Enter Employee Name">
-                        </div>
-                        <div class="col-6 mt-2">
-                            <label>Contact No</label>
-                            <input type="text"  class="form-control" [(ngModel)]="EmployeeObj.contactNo" placeholder="Enter Contact No">
-                        </div>
-                        <div class="col-6 mt-2">
-                            <label>Email</label>
-                            <input type="text"  class="form-control" [(ngModel)]="EmployeeObj.emailId" placeholder="Enter Email">
-                        </div>
-                        <div class="col-6 mt-2">
-                            <label>Password</label>
-                            <input type="text" class="form-control" [(ngModel)]="EmployeeObj.password" placeholder="Enter Password">
-                        </div>
-                        <div class="col-6 mt-2">
-                            <label>parent Department</label>
-                            <select class="form-control" [(ngModel)]="deptId" placeholder="Department" (change)="onDeptChange()">
-                                <option selected="selected">Select Department</option>
-                                @for (parent of parentDeptList; track $index) {
-                                    <option [value]="parent.departmentId">{{parent.departmentName}}</option>
-                                }
-                            </select>
-                        </div>
-                        <div class="col-6 mt-2">
-                            <label>child  Department</label>
-                            <select class="form-control" placeholder="Department" [(ngModel)]="EmployeeObj.deptId">
-                                <option selected="selected">Select Department</option>
-                                @for (child of childDeptList; track $index) {
-                                    <option [value]="child.childDeptId">{{child.departmentName}}</option>
-                                }
-                            </select>
-                        </div>
-                        
-                        <div class="col-6 mt-2">
-                            <label>Role</label>
-                            <input type="text" class="form-control" [(ngModel)]="EmployeeObj.role" placeholder="Enter Role">
-                        </div>
-                        <div class="col-6 mt-2">
-                            <label>Gender</label>
-                            <input type="radio" value="male" [(ngModel)]="EmployeeObj.gender"> male
-                            <input type="radio" value="female" [(ngModel)]="EmployeeObj.gender"> female
-                            <input type="radio" value="other" [(ngModel)]="EmployeeObj.gender"> other
-                        </div>
-                    </div>
-                    <div class="row">
-    
-    
-                        <div class="col-12 mt-2 text-center">
-    
-                            @if(EmployeeObj.employeeId == 0){
-                                <button type="reset" class="btn btn-secondary m-2" (click)="onSubmit()" >Submit</button>
-                            } @else{
-                                <button type="reset" class="btn btn-secondary m-2" (click)="onEdit()" >Update</button>
-                            }
-                            
-                        </div>
-                    </div>
-                </div>
-    
-            </div>
-        </div>
-    }
 </div>

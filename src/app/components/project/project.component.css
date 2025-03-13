@@ -1,56 +1,111 @@
-/* project.component.css */
-.container {
-    width: 80%;
-    margin: auto;
+/* Global Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
 }
 
-.header {
+/* Container Styles */
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+}
+
+/* Project List Styles */
+.project-list {
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0);
+    padding: 20px;
+}
+
+.project-list .header {
+    background-color: #090a0c;
+    color: white;
+    padding: 10px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #0a0a0a;
-    color: #ccc;
-    padding: 10px;
-    border-radius: 5px;
 }
 
-h5 {
-    margin: 0;
-}
-
-.btn-primary, .btn-danger, .btn-success {
-    padding: 8px 12px;
-    border: none;
-    cursor: pointer;
-    border-radius: 4px;
-}
-
-.btn-primary { background-color: #7f9ac2; color: white; }
-.btn-danger { background-color: #dc3545; color: white; }
-.btn-success { background-color: #28a745; color: white; }
-
-table {
+.project-list table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 10px;
 }
 
-th, td {
+.project-list th, .project-list td {
     border: 1px solid #ddd;
-    padding: 8px;
+    padding: 10px;
     text-align: left;
+}
+
+.project-list th {
+    background-color: #f2f2f2;
+}
+
+/* Project Form Styles */
+.project-form {
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    
+    padding: 20px;
+}
+
+.project-form .header {
+    background-color:  black;
+    color: white;
+    padding: 10px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .form-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-    margin-top: 10px;
+    margin-top: 20px;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-left: 20px;
 }
 
-input, select {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+.form-grid label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+/* Button Styles */
+.btn-primary {
+    background-color: #808d82;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+    .project-list, .project-form {
+        padding: 10px;
+    }
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
 }

@@ -3,12 +3,13 @@ import { MasterService } from '../../services/master.service';
 import { Employee, IApiResponse, IchildDepartment, IparentDepartment } from '../../model/Employee';
 import { FormsModule } from '@angular/forms';
 import { EmployeeService } from '../../services/employee.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-employee',
-  imports: [FormsModule],
+  imports: [FormsModule, CommonModule],
   templateUrl: './employee.component.html',
-  styleUrl: './employee.component.scss'
+  styleUrl: './employee.component.css'
 })
 export class EmployeeComponent implements OnInit{
 
