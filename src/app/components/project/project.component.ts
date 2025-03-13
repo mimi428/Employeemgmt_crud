@@ -9,7 +9,7 @@ import { AsyncPipe, CommonModule } from '@angular/common';
   selector: 'app-project',
   imports: [ReactiveFormsModule, AsyncPipe, CommonModule,FormsModule],
   templateUrl: './project.component.html',
-  styleUrl: './project.component.scss'
+  styleUrl: './project.component.css'
 })
 export class ProjectComponent implements OnInit {
 
@@ -101,9 +101,6 @@ export class ProjectComponent implements OnInit {
     this.initializeForm(project);
   }
 
-  addProjectEmployee(){
-    this.employeeService.addNewEmp(this.employeeProject).subscribe((res: EmployeeProject) => {
-      alert("Employee Added Successfully"); 
-    })
+  
   }
-}
+
