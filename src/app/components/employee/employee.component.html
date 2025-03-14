@@ -1,4 +1,3 @@
-<!-- employee-portal.component.html -->
 <div class="employee-portal">
     <div class="card">
         <div class="card-header">
@@ -81,9 +80,9 @@
                 </div>
                 <div class="form-group">
                     <label>Gender</label>
-                    <label><input type="radio" value="male" [(ngModel)]="EmployeeObj.gender"> Male</label>
-                    <label><input type="radio" value="female" [(ngModel)]="EmployeeObj.gender"> Female</label>
-                    <label><input type="radio" value="other" [(ngModel)]="EmployeeObj.gender"> Other</label>
+                    <label><input type="radio" value="male" [(ngModel)]="EmployeeObj.gender"> male</label>
+                    <label><input type="radio" value="female" [(ngModel)]="EmployeeObj.gender"> female</label>
+                    <label><input type="radio" value="other" [(ngModel)]="EmployeeObj.gender"> other</label>
                 </div>
                 <div class="form-group text-center">
                     <button *ngIf="EmployeeObj.employeeId == 0" class="btn-secondary" (click)="onSubmit()">Submit</button>
