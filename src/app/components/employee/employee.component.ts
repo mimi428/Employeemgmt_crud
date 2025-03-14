@@ -51,9 +51,6 @@ export class EmployeeComponent implements OnInit{
       }
     }
 
-
-  
-
   closeSidePanel() {
     this.isSidePanel.set(false);
     this.employeeForm.reset({ employeeId: 0 });
@@ -108,7 +105,7 @@ export class EmployeeComponent implements OnInit{
       this.closeSidePanel();
       this.showEmployeeList();
   },error => {
-    alert("Something went wrong");
+    alert("Something went wrong, Try again");
   })
   }
 }
