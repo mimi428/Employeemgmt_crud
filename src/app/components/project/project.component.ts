@@ -1,5 +1,5 @@
 import { Component, ElementRef, inject, OnInit, ViewChild } from '@angular/core';
-import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { Employee, EmployeeProject, Project } from '../../model/Employee';
 import { EmployeeService } from '../../services/employee.service';
@@ -14,8 +14,6 @@ import { AsyncPipe, CommonModule } from '@angular/common';
 export class ProjectComponent implements OnInit {
 
   @ViewChild("mymodel") EmployeeModel: ElementRef | undefined;
-
-
   employeeService= inject( EmployeeService );
 
   EmployeeData$: Observable<Employee[]> =new Observable<Employee[]>();
@@ -86,10 +84,8 @@ export class ProjectComponent implements OnInit {
       },error=>{
         alert("Project creation failed");
       })
-    }
-    
+    } 
   }
-
   getAllProjects(){
     this.employeeService.getprojects().subscribe((res: Project[]) => {
       this.projectList = res;
@@ -99,8 +95,15 @@ export class ProjectComponent implements OnInit {
 
   editProject(project: Project){
     this.initializeForm(project);
-  }
-
-  
+  } 
+  deleteProject(id:number){
+      if(!confirm("Are you sure you want to delete this employee?")){
+        return;
+      }
+      this.employeeService.deleteProjectById(id).subscribe((res: Employee) => {
+        alert("Employee Deleted Successfully");
+        this.projectList;
+      });
+    }
   }
 

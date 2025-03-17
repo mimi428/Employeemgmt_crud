@@ -51,5 +51,9 @@ export class EmployeeService {
   getEmployeeProjects(id: number){
     return this.http.get<EmployeeProject[]>(this.apiUrl + 'GetAllProjectEmployee/' + id);
   }
+  
+  deleteProjectById(id: number){
+    return this.http.delete<Employee>(this.apiUrl + `DeleteProject/${id}`);
+  }
 
 }

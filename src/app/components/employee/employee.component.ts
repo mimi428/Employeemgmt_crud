@@ -14,9 +14,7 @@ import { CommonModule } from '@angular/common';
 export class EmployeeComponent implements OnInit{
 
   parentDeptList: IparentDepartment[] = [];
-
   childDeptList: IchildDepartment[]= [];
-
   deptId: number=0;
 
   EmployeeObj: Employee = new Employee();
@@ -36,17 +34,17 @@ export class EmployeeComponent implements OnInit{
     this.isSidePanel.set(true);
     if(!employee){
       this.employeeForm.reset({
-        employeeId: 0, // Default value for employeeId
-        employeeName: '', // Empty string for name
-        contactNo: '', // Empty string for contact number
-        emailId: '', // Empty string for email
-        password: '', // Empty string for password
-        deptId: 0, // Default department ID
-        role: 'Employee', // Default role
-        gender: '', // Empty string for gender
+        employeeId: 0, 
+        employeeName: '', 
+        contactNo: '', 
+        emailId: '', 
+        password: '', 
+        deptId: 0, 
+        role: 'Employee', 
+        gender: '', 
       });
     }else {
-        // For editing an existing employee, patch the form with the provided data
+        // For editing an existing employee we have to  patch the form with aleady provided data
         this.employeeForm.patchValue(employee);
       }
     }
