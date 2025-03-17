@@ -9,6 +9,7 @@ The Employee Management System is a web application built using **Angular 19** t
   - View employee details.
   - Update employee records.
   - Delete employees.
+- Add, Update and View Project of recorded employees
 - **Dashboard** for managing employees.
 - **LocalStorage Support** for admin sessions.
 
