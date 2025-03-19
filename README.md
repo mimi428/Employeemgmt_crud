@@ -13,6 +13,15 @@ The Employee Management System is a web application built using **Angular 19** t
 - **Dashboard** for managing employees.
 - **LocalStorage Support** for admin sessions.
 
+## Development server
+To start a local development server, run:
+
+```bash
+ng serve --port 4209
+```
+
+Once the server is running, open your browser and navigate to `http://localhost:4209/`. The application will automatically reload whenever you modify any of the source files.
+
 Work in progress.....
 
 
